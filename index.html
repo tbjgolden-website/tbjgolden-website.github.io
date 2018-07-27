@@ -8,6 +8,10 @@
       letter-spacing: -.1ex;
     }
 
+    html {
+      font-size: 1vw;
+    }
+
     html, body {
       margin: 0;
       padding: 0;
@@ -42,19 +46,20 @@
     }
 
     h1 {
-      font-size: 13vw;
+      font-size: 13rem;
     }
 
     h2 {
-      font-size: 7vw;
+      font-size: 7rem;
     }
 
     p {
-      font-size: 5vw;
+      font-size: 5rem;
     }
 
     #time {
       padding-top: 0;
+      text-shadow: 1px 1px 0 #000, 2px 2px 0 #fff;
     }
 
     article {
@@ -68,14 +73,23 @@
       color: inherit;
     }
 
+    article > :first-child, div > :first-child {
+      padding-top: 0;
+    }
+
     hr {
       border: 0;
-      padding: 4vw 0 0;
+      padding: 4rem 0 0;
     }
 
     .small {
-      font-size: 4vw;
+      font-size: 4rem;
       color: #777;
+    }
+
+    .mw {
+      max-width: 1200px;
+      margin: 2rem auto;
     }
 
     [data-magic] {
@@ -103,105 +117,141 @@
   </style>
   <body>
     <div>
-      <h1 data-magic="Get a website&#10;in 99 minutes&#10;for just £99.">
-        Get a website<br>in 99 minutes<br>for just £99.
-      </h1>
-      <h2>99 minutes from when?</h2>
-      <p style="font-weight: bold;">Now, pretty much.</p>
-      <p>Provided I'm free, you could theoretically have a website by:</p>
-      <h1 id="time"></h1>
-      <script>
-        var el = document.getElementById('time');
-        var now = new Date();
-        var seconds = now.getSeconds();
-        el.innerHTML = toTime(now);
-        setTimeout(function () {
-          now = new Date();
+      <div class="mw">
+        <h1 data-magic="Get a website&#10;in 99 minutes&#10;for just £99.">
+          Get a website<br>in 99 minutes<br>for just £99.
+        </h1>
+        <h2>99 minutes from when?</h2>
+        <p style="font-weight: bold;">Now, pretty much.</p>
+        <p>Provided I'm available, you could theoretically have a website by:</p>
+        <h1 id="time"></h1>
+        <script>
+          var el = document.getElementById('time');
+          var now = new Date();
+          var seconds = now.getSeconds();
           el.innerHTML = toTime(now);
-          setInterval(function () {
+          setTimeout(function () {
             now = new Date();
             el.innerHTML = toTime(now);
-          }, 60000);
-        }, (60 - seconds) * 1000);
+            setInterval(function () {
+              now = new Date();
+              el.innerHTML = toTime(now);
+            }, 60000);
+          }, (60 - seconds) * 1000);
 
-        function toTime (date) {
-          var hours = date.getHours();
-          var minutes = date.getMinutes();
-          hours += (minutes > 20) ? 2 : 1;
-          hours = hours % 24;
-          minutes = (minutes + 99) % 60;
-          return (hours % 12) + ':' + (minutes + '').padStart(2, '0') + ' ' + ((hours > 11) ? 'pm' : 'am');
-        }
-      </script>
-      <hr>
+          function toTime (date) {
+            var hours = date.getHours();
+            var minutes = date.getMinutes();
+            hours += (minutes > 20) ? 2 : 1;
+            hours = hours % 24;
+            minutes = (minutes + 99) % 60;
+            return (hours % 12) + ':' + (minutes + '').padStart(2, '0') + ' ' + ((hours > 11) ? 'pm' : 'am');
+          }
+        </script>
+        <hr>
+      </div>
     </div>
     <article>
-      <h1>How?</h1>
-      <p>I write it as fast as I can.</p>
-      <h2>But 99 minutes?</h2>
-      <p>There's ways to write websites that fast. It takes a lot of practice, and good judgement.</p>
-      <p class="small">
-        (For those who are interested)<br><br>
-        Various micro-optimisations like:
-      </p>
-      <ul class="small">
-        <li>Memorising the full web specifications, meaning I don't have to google things</li>
-        <li>Simple and proven colour schemes</li>
-        <li>Embracing the time limitations</li>
-        <li>Following a function decides form methodology</li>
-        <li>Ignoring really old versions of Internet Explorer</li>
-        <li>Being both the developer and designer</li>
-        <li>A ton of caffeine</li>
-        <li>Experience (practice makes perfect)</li>
-      </ul>
-      <h2>Where's the catch?</h2>
-      <p>
-        As it is done as efficiently as possible, some things will either demand
-        a bit of extra time or will be skipped.
-      </p>
-      <p class="small">
-        Most things will be quicker than you'd imagine, but some things
-        are actually incredibly time consuming. For instance, drag and drop
-        can take as long as a weekend to do properly, yet mobile responsiveness
-        might only take 20 minutes. Just be sure to ask how long you expect
-        it to take realistically.
-      </p>
-      <h2>Will you set up the domains and hosting?</h2>
-      <p>
-        Yes.
-      </p>
-      <p class="small">
-        The domain registration is not included in the price. The hosting will probably be
-        free, but more ambitious projects might demand a paid server.<br><br>
-        I strongly recommend <a href="https://www.namecheap.com" target="_blank">namecheap.com</a> for
-        domain registration, and I can help you through this process at no charge.
-      </p>
-      <h2>What if it takes longer than 99 minutes?</h2>
-      <p>
-        As a general rule, my rate is £1 a minute.
-      </p>
-      <p class="small">
-        I don't charge for time I'm not actually working on your project. In the near future
-        I aim to actually set up a live stream of me working on it, so you can be sure you're
-        getting your money's worth. I don't charge for the time it takes to get it live when it
-        has been built. I do charge for any time where I need to create content to go on the
-        website (i.e. writing any text content, sourcing images, logos, icons). As a consequence
-        it is recommended that all text content and images are in a zip file or some other easily
-        accessible medium.
-      </p>
-      <h2>What if it takes less than 99 minutes?</h2>
-      <p>
-        It won't. £99 is the minimum price, but also a guarantee of minimum work.
-      </p>
-      <h2>Who are you?</h2>
-      <p>
-        My name is Tom Golden. You can see my personal website, with my portfolio, here:<br>
-        <a href="https://tbjgolden.com" target="_blank">tbjgolden.com</a>
-      </p>
-      <hr>
+      <div class="mw">
+        <h1>How?</h1>
+        <p>I write it as fast as I can. Think of me as a barber for websites!</p>
+        <h2>But 99 minutes?</h2>
+        <p>There's ways to write websites that fast. It takes a lot of practice, and good judgement.</p>
+        <p class="small">
+          (For those who are interested)<br><br>
+          Various micro-optimisations like:
+        </p>
+        <ul class="small">
+          <li>Memorising the full web specifications, meaning I don't have to google things</li>
+          <li>Simple and proven colour combinations</li>
+          <li>Embracing the time limitations</li>
+          <li>Following a function decides form methodology</li>
+          <li>Ignoring really old versions of Internet Explorer</li>
+          <li>Being both the developer and designer</li>
+          <li>A ton of caffeine</li>
+          <li>Experience (practice makes perfect)</li>
+        </ul>
+        <h2>Where's the catch?</h2>
+        <p>
+          As it is done as efficiently as possible, some things will either demand
+          a bit of extra time or will be skipped.
+        </p>
+        <p class="small">
+          Most things will be quicker than you'd imagine, but some things
+          are actually incredibly time consuming. For instance, drag and drop
+          can take as long as a weekend to do properly, yet mobile responsiveness
+          might only take 20 minutes. Just be sure to ask how long you expect
+          it to take realistically.
+        </p>
+        <h2>Will you set up the domains and hosting?</h2>
+        <p>
+          Yes.
+        </p>
+        <p class="small">
+          The domain registration is not included in the price. The hosting will probably be
+          free, but more ambitious projects might demand a paid server.<br><br>
+          I strongly recommend <a href="https://www.namecheap.com" target="_blank">namecheap.com</a>
+          for domain registration, and I can help you through this process at no charge.
+        </p>
+        <h2>What if it takes longer than 99 minutes?</h2>
+        <p>
+          As a general rule, my rate is £1 a minute.
+        </p>
+        <p class="small">
+          I don't charge for time I'm not actually working on your project. In the near future
+          I aim to actually set up a live stream of me working on it, so you can be sure you're
+          getting your money's worth. I don't charge for the time it takes to get it live when it
+          has been built. I do charge for any time where I need to create content to go on the
+          website (i.e. writing any text content, sourcing images, logos, icons). As a consequence
+          it is recommended that all text content and images are in a zip file or some other easily
+          accessible medium.
+        </p>
+        <h2>What if it takes less than 99 minutes?</h2>
+        <p>
+          It won't. £99 is the minimum price, but also a guarantee of minimum work.
+        </p>
+        <h2>Who are you?</h2>
+        <p>
+          My name is Tom. I've worked in London and San Francisco, and have been making websites
+          professionally since 2014 for some reputable companies, and have a degree in Computer Science
+          from the University of Warwick.
+        </p>
+        <p>
+          You can see my personal website, with my portfolio, here:<br>
+          <a href="https://tbjgolden.com" target="_blank">tbjgolden.com</a>
+        </p>
+        <hr>
+      </div>
     </article>
     <div>
-      Get in touch
+      <div class="mw">
+        <p class="small">
+          This website took 99 minutes.
+        </p>
+        <p style="padding-top: 1rem">
+          <strong>
+            <script>
+              document.write('<a href="mail' + 'to:mail' + String.fromCharCode(64) + 'tbjgo' + 'lden.website">Make me a website!</a>');
+            </script>
+          </strong>
+        </p>
+      </div>
     </div>
+    <script>
+      var debounce = null;
+      window.addEventListener('resize', function () {
+        clearTimeout(debounce);
+        debounce = setTimeout(function () {
+          setTextSize();
+        }, 50);
+      });
+
+      function setTextSize () {
+        var vw = window.innerWidth / 100;
+        document.querySelector('html').style.fontSize = Math.min(8, vw) + 'px';
+      }
+
+      setTextSize();
+    </script>
   </body>
 </html>
